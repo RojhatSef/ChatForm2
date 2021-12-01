@@ -1,0 +1,27 @@
+{
+  "name": "chatform",
+  "version": "1.0.0",
+  "description": "Chatapplication",
+  "main": "index.js",
+  "scripts": {
+    "test": "Chat application"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RojhatSef/ChatForm.git"
+  },
+  "keywords": [
+    "chat",
+    "socket.io",
+    "application"
+  ],
+  "author": "Rojhat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RojhatSef/ChatForm/issues"
+  },
+  "homepage": "https://github.com/RojhatSef/ChatForm#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
