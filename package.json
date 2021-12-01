@@ -1,10 +1,10 @@
 {
-  "name": "chatform",
+  "name": "socket-chat-example",
   "version": "1.0.0",
-  "description": "Chatapplication",
-  "main": "index.js",
+  "description": "my first socket.io app",
+
   "scripts": {
-    "test": "Chat application"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/RojhatSef/ChatForm#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io": "^4.4.0"
   }
 }
+
