@@ -13,7 +13,13 @@ const io = socketio(server);
 app.use(express.static(path.join(__dirname, "public"))); 
 // run when a client connect to the server 
 io.on('connection', socket =>{
+
+ 
   console.log('New WS Connection...'); 
+
+  // we send data through emit back and forth
+ // emitting a messege to our client when joining the server
+  socket.emit('messege', 'Welcome to the dungeon chat')
 }); 
 
 // we set port to 3000 or it checkes for a port 
