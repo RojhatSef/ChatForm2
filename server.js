@@ -32,7 +32,8 @@ io.on('connection', socket => {
 
   // listen/catch for chatMessage post it on the server
   socket.on('chatMessage', (msg) =>{
-    io.emit('chatMessage', msg);  
+    io.emit('message', msg);  
+    console.log(msg);
   });
 
 }); 
