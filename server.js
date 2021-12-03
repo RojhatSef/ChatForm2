@@ -15,20 +15,20 @@ app.use(express.static(path.join(__dirname, "public")));
 // (1) start of message
 io.on('connection', socket => {
 
- 
-  console.log('New WS Connection...'); 
-
+//(2) emit messege of what we want to main
   // we send any kind of data through emit back and forth
  // emitting a message to our client when joining the server
- //(2) emit to main and to single user
+ // emit to main and to single user
   socket.emit('message', 'Welcome to the dungeon chat'); 
 
 
   // when a user connects will broadcast to everyone except the user
   socket.broadcast.emit('message', 'New user has joined the chat'); 
 
-  // emits when the client is disconnected from server 
-  socket.on('Disconnect')
+  // emits when the client/user has disconnected from server 
+  socket.on('disconnect', () =>{
+    io.emit('message', 'A user has left the chat '); 
+  });
 
 }); 
 
