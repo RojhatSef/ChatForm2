@@ -30,6 +30,11 @@ io.on('connection', socket => {
     io.emit('message', 'A user has left the chat '); 
   });
 
+  // listen/catch for chatMessage post it on the server
+  socket.on('chatMessage', (msg) =>{
+    io.emit('chatMessage', msg);  
+  });
+
 }); 
 
 // we set port to 3000 or it checkes for a port 
