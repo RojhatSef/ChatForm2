@@ -2,6 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
+const formatMessage = ('./utils/messages'); 
 
 const app = express();
 // setting upp our server to connect to socket.io directly
@@ -19,7 +20,7 @@ io.on('connection', socket => {
   // we send any kind of data through emit back and forth
  // emitting a message to our client when joining the server
  // emit to main and to single user
-  socket.emit('message', 'Welcome to the dungeon chat'); 
+  socket.emit('message',formatMessage 'Welcome to the dungeon chat'); 
 
 
   // when a user connects will broadcast to everyone except the user
