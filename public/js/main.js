@@ -27,5 +27,6 @@ function outputMessage(message){
     const div = document.createElement('div');
     div.classList.add('message');
     div.innerHTML = `${message}`; 
+    // we search for the form class of chat-messages
     document.querySelector('.chat-messages').appendChild(div); 
 }
