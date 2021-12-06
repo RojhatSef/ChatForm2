@@ -44,10 +44,19 @@ chatForm.addEventListener('submit', (e) => {
 function outputMessage(message){
     //takes in message 
     const div = document.createElement('div');
-    // adds the class of message
-    div.classList.add('message');
-    //dom manipulating our html to our 
-    div.innerHTML = `<p class="text">${message.text}</p>`; 
+      // adds the class of message
+  div.classList.add('message');
+  const p = document.createElement('p');
+  p.classList.add('meta');
+      //dom manipulating our html to our 
+  p.innerText = message.username;
+  p.innerHTML += `<span>${message.time}</span>`;
+  div.appendChild(p);
+  const para = document.createElement('p');
+  para.classList.add('text');
+  para.innerText = message.text;
+  div.appendChild(para);
+ 
     // we search for the form class of chat-messages and use it's container
     document.querySelector('.chat-messages').appendChild(div); 
 }

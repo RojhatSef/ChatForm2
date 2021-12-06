@@ -40,8 +40,8 @@ io.on('connection', socket => {
 
   // listen/catch for chatMessage post it on the server
   socket.on('chatMessage', (msg) =>{
-    io.emit('message',formatMessage("", msg));  
-    console.log(msg);
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+ 
   });
   // emits when the client/user has disconnected from server 
   socket.on('disconnect', () =>{
