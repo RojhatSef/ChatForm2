@@ -2,7 +2,9 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
+// calling our clientscripts 
 const formatMessage = require('./utils/messages'); 
+const {userJoin, getCurrentUser} = require('./utils/users'); 
 
 const app = express();
 // setting upp our server to connect to socket.io directly
@@ -18,6 +20,10 @@ const botName = "ChatBot Rojhat";
 io.on('connection', socket => {
   socket.on('joinRoom',({username, room}) =>{
 
+    // we want our user to join our chat, with an id and username and what room he/she joins  
+    const user = userJoin(socket.id, username, room); 
+    socket.join(user.room);
+
 //(2) emit messege of what we want to main
   // we send any kind of data through emit back and forth
  // emitting a message to our client when joining the server
@@ -26,7 +32,7 @@ io.on('connection', socket => {
 
 
  // when a user connects will broadcast to everyone except the user
- socket.broadcast.emit('message',formatMessage(botName, 'New user has joined the chat')); 
+ socket.broadcast.to(user.room).emit('message',formatMessage(botName, `${user.username} has joined the chat`)); 
 
   });
 
