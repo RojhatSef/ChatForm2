@@ -1,12 +1,15 @@
 // to post code to our front-end we grab the id and change the html 
 const chatForm = document.getElementById('chat-form'); 
-const socket = io(); 
 const chatMessages = document.querySelector(".chat-messages"); 
 
-Const {username,room } = Qs.parse(location.search {
-    
+const {username,room } = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
 }); 
+const socket = io(); 
+//join the chatroom
+socket.emit('joinRoom', {username, room})
 
+console.log(username,room)
 // our emit from server we handle it here 
 // whenever we get the messege event we send this paramter 
 // (3) emit to the website our message
