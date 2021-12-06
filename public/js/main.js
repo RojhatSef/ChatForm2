@@ -2,6 +2,11 @@
 const chatForm = document.getElementById('chat-form'); 
 const socket = io(); 
 const chatMessages = document.querySelector(".chat-messages"); 
+
+Const {username,room } = Qs.parse(location.search {
+    
+}); 
+
 // our emit from server we handle it here 
 // whenever we get the messege event we send this paramter 
 // (3) emit to the website our message
@@ -39,7 +44,7 @@ function outputMessage(message){
     // adds the class of message
     div.classList.add('message');
     //dom manipulating our html to our 
-    div.innerHTML = `${message}`; 
+    div.innerHTML = `<p class="text">${message.text}</p>`; 
     // we search for the form class of chat-messages and use it's container
     document.querySelector('.chat-messages').appendChild(div); 
 }
