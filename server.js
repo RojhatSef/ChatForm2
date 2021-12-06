@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-const formatMessage = ('./utils/messages'); 
+const formatMessage = require('./utils/messages'); 
 
 const app = express();
 // setting upp our server to connect to socket.io directly
@@ -12,6 +12,7 @@ const io = socketio(server);
 
 // set our static folder to public 
 app.use(express.static(path.join(__dirname, "public"))); 
+const botName = "ChatBot Rojhat"
 // run when a client connect to the server 
 // (1) start of message
 io.on('connection', socket => {
@@ -20,20 +21,20 @@ io.on('connection', socket => {
   // we send any kind of data through emit back and forth
  // emitting a message to our client when joining the server
  // emit to main and to single user
-  socket.emit('message',formatMessage 'Welcome to the dungeon chat'); 
+  socket.emit('message',formatMessage(botName,'Welcome to the dungeon chat')); 
 
 
   // when a user connects will broadcast to everyone except the user
-  socket.broadcast.emit('message', 'New user has joined the chat'); 
+  socket.broadcast.emit('message',formatMessage(botName, 'New user has joined the chat')); 
 
   // emits when the client/user has disconnected from server 
   socket.on('disconnect', () =>{
-    io.emit('message', 'A user has left the chat '); 
+    io.emit('message',formatMessage(botName, 'A user has left the chat ')); 
   });
 
   // listen/catch for chatMessage post it on the server
   socket.on('chatMessage', (msg) =>{
-    io.emit('message', msg);  
+    io.emit('message',formatMessage(" ", msg));  
     console.log(msg);
   });
 
