@@ -5,7 +5,6 @@ const socketio = require('socket.io');
 // calling our clientscripts 
 const formatMessage = require('./utils/messages'); 
 const {userJoin, getCurrentUser} = require('./utils/users'); 
-
 const app = express();
 // setting upp our server to connect to socket.io directly
 const server = http.createServer(app); 
@@ -36,12 +35,11 @@ io.on('connection', socket => {
 
   });
 
-  
-
   // listen/catch for chatMessage post it on the server
-  socket.on('chatMessage', (msg) =>{
+  socket.on('chatMessage', msg => {
+    const user = getCurrentUser(socket.id);
+
     io.to(user.room).emit('message', formatMessage(user.username, msg));
- 
   });
   // emits when the client/user has disconnected from server 
   socket.on('disconnect', () =>{
