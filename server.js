@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const botName = "ChatBot Rojhat"; 
 // run when a client connect to the server 
 // (1) start of message
-io.on('connection', socket => {
+io.on('connection', socket => {//server listen to emit from joinRoom
   socket.on('joinRoom',({username, room}) =>{
 
     // we want our user to join our chat, with an id and username and what room he/she joins  
